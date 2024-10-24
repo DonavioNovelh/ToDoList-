@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <style>
+       /* @import url('https://fonts.googleapis.com/css2?family=Asar&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');*/
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-image: linear-gradient(to left, white);
+            display: flex;  /* Alteração */
+            flex-direction: column;  /* Alteração */
+
+        }
+
+        .hed {
+            background-image: linear-gradient(to right, #08B2F6, #08B2F6 ,#0487bb);
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+           
+        }
+
+        h1 {
+            font-family: "Asar", serif;
+            color: white;
+        }
+
+        .add {
+            padding: 0px 20px;
+            color:  #3f3f3f ;
+            border: none;
+            height: 40px;
+            width: 90%;
+            text-overflow: ellipsis;
+        } 
+        
+        .add:hover { 
+           
+            outline: 2px solid #b5c6cc;
+        }
+        .add:focus { 
+           
+            outline: 2px solid #5a5f61;
+        }
+        
+        .qq {
+            /*background-color: aquamarine;-->*/
+            background-color: transparent;
+            display: flex;
+            width: 100%;
+            max-width: 60%;
+            flex-direction: row;
+            justify-content: center;
+            padding-top: 20px;
+            gap: 10px;
+            
+            
+        }
+
+        input {
+            border-radius: 10px;
+            font-size: 18px;
+           /* border: none;*/
+           
+        }
+
+        .btn {
+            width: 70px;
+            color:  #3f3f3f ;
+            border: none;
+            
+        }
+        .btn:hover {
+            background-color: #004c6a;
+            color: white;
+            transition: .2s;
+            outline: 1px solid white;
+        }
+
+        .conta {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: white;
+         flex-grow: 1;
+         padding: 0 20%;
+         
+        }
+
+        .cla {
+         width: 100%;
+         min-width: 50px;
+         max-width: 750px;
+         gap: 10px;
+         
+         height: 100%;
+         flex-direction: row;
+         justify-content: space-around;
+
+      
+        }
+        .gente {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         background-color: #F5F5F5;
+         height: 40px;
+         border-radius: 02px;
+         align-items: center;
+         padding: 10px;
+         margin-top: 10px;
+
+         
+         
+        }
+
+         .butoes {
+            display: flex;
+            padding-left: 25px;
+            gap: 20px  
+         }
+
+
+         p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+         }
+         .cke {
+            color: #0683EF; font-size: 18pt;
+         }
+         .fechar {
+            color: #e82a2a; font-size: 18pt;
+         }
+         .h1 {
+            margin-top: 20px;
+            
+            margin-bottom: 20px;
+         }
+
+         .butoes:hover {
+            user-select: none;
+            cursor: pointer;
+         }
+
+         .buta {
+            color: rgb(37, 197, 37);
+         }
+        
+    </style>
+</head>
+<body>
+   
+    <div class="hed">
+        <h1>TODO LIST</h1>
+       
+        
+        <div class="qq">
+            <input class="add" type="text" name="" id="" required minlength="3" placeholder="Write your todo list here...">
+            <input type="submit" value="ADD" class="btn">
+        </div>
+
+        
+
+    </div>
+
+    <div>
+      <h1 class="h1" style="color: black; text-align: center;">List Of Todo Works</h1>
+    </div>
+   <div class="conta">
+      <div class="cla">
+         <div class="gente">
+            <p>Rent Pay!</p> <div class="butoes"></div>
+         </div>
+         
+      </div>
+   </div>
+</body>
+
+<script>
+   var spanCheck = document.createElement('span') ; spanCheck.setAttribute('class', "cke material-symbols-outlined" )
+   spanCheck.innerText = 'check';
+   console.log(spanCheck)
+
+   var edit = document.createElement('span') ; 
+   edit.setAttribute('class', "buta" )
+   edit.innerText = 'EDIT';
+   console.log(edit)
+
+   var spanCheck2 = document.createElement('span') ; spanCheck2.setAttribute('class', "fechar material-symbols-outlined" )
+   spanCheck2.innerText = 'close';
+   console.log(spanCheck2)
+
+
+   var btn = document.querySelector('.gente')
+   btn.
+   btn.append(spanCheck)
+   btn.append(spanCheck2)
+   btn.append(edit)
+   
+   var input = document.querySelector('.add')
+   var divB = document.querySelector('.cla')
+   console.log(input.value.length)
+   btn.addEventListener('click', ()=> {
+        
+      if(!input.checkValidity()) {
+         input.reportValidity()
+      }
+
+      else {
+         texto = input.value
+         
+      }
+
+
+   }
+   
+   )
+</script>
+</html>
