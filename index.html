@@ -22,16 +22,20 @@
             background-image: linear-gradient(to left, white);
             display: flex;  /* Alteração */
             flex-direction: column;  /* Alteração */
+            overflow-x: hidden;
 
         }
 
         .hed {
-            background-image: linear-gradient(to right, #08B2F6, #08B2F6 ,#0487bb);
+            
+            width: 100%;
+            background-image: linear-gradient(to right,#08B8F6, #08B2F6 ,#0487bb);
             height: 170px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+           
            
         }
 
@@ -83,6 +87,7 @@
             width: 70px;
             color:  #3f3f3f ;
             border: none;
+            background-color: white;
             
         }
         .btn:hover {
@@ -108,9 +113,10 @@
          max-width: 750px;
          gap: 10px;
          
-         height: 100%;
+         height: 400px;
          flex-direction: row;
          justify-content: space-around;
+         padding-bottom: 20px;
 
       
         }
@@ -161,6 +167,8 @@
          .buta {
             color: rgb(37, 197, 37);
          }
+
+         
         
     </style>
 </head>
@@ -193,41 +201,65 @@
 </body>
 
 <script>
-   var spanCheck = document.createElement('span') ; spanCheck.setAttribute('class', "cke material-symbols-outlined" )
-   spanCheck.innerText = 'check';
-   console.log(spanCheck)
+    //criando os botoes
+    var click = document.querySelector('.btn') 
 
+   click.addEventListener('click', ()=> {
+
+    var spanCheck = document.createElement('span') ; 
+   spanCheck.setAttribute('class', "cke material-symbols-outlined");
+   spanCheck.innerText = 'check';
+
+   var input = document.querySelector('.add')
    var edit = document.createElement('span') ; 
    edit.setAttribute('class', "buta" )
    edit.innerText = 'EDIT';
-   console.log(edit)
 
-   var spanCheck2 = document.createElement('span') ; spanCheck2.setAttribute('class', "fechar material-symbols-outlined" )
+
+   var spanCheck2 = document.createElement('span'); 
+   spanCheck2.setAttribute('class', "fechar material-symbols-outlined" )
    spanCheck2.innerText = 'close';
-   console.log(spanCheck2)
 
 
-   var btn = document.querySelector('.gente')
-   btn.
-   btn.append(spanCheck)
-   btn.append(spanCheck2)
-   btn.append(edit)
-   
-   var input = document.querySelector('.add')
-   var divB = document.querySelector('.cla')
-   console.log(input.value.length)
-   btn.addEventListener('click', ()=> {
-        
+  
+
+    
+   //criando a div que ficara com botes dentro
+   var divbutoes = document.createElement('div'); 
+   divbutoes.setAttribute('class', "butoes" )
+   divbutoes.append(spanCheck, edit,spanCheck2)
+
+   //criando o campo que contera butoes e os elementos
+   var docu = document.createElement('div')
+   docu.setAttribute('class', "gente");
+   docu.append(texto, divbutoes )
+
+   //criando os elementos(paragrafos)
+   var texto =  document.createElement('p')
+  
+
+   var campo = document.querySelector('.cla')
+   campo.append(docu)
+
+
+   console.log('antes do if')
       if(!input.checkValidity()) {
          input.reportValidity()
+         console.log('deu p if')
       }
 
       else {
-         texto = input.value
-         
+        console.log('nao deu o if')
+         texto.textContent = 
+         console.log(texto)
+         docu.append(texto)
+         btn.append(spanCheck)
+         btn.append(edit)
+         btn.append(spanCheck2)
+            
       }
 
-
+      
    }
    
    )
