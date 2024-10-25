@@ -17,6 +17,7 @@
         }
 
         body {
+          
             height: 100vh;
             width: 100vw;
             background-image: linear-gradient(to left, white);
@@ -26,8 +27,15 @@
 
         }
 
-        .hed {
+        .puta {
+            width: 100%;
+            position: fixed;
             
+         
+        }
+
+        .hed {
+
             width: 100%;
             background-image: linear-gradient(to right,#08B8F6, #08B2F6 ,#0487bb);
             height: 170px;
@@ -104,6 +112,11 @@
          background-color: white;
          flex-grow: 1;
          padding: 0 20%;
+         margin-top: 240px;
+         overflow-y: scroll;
+       
+         margin-bottom: 10px;
+         
          
         }
 
@@ -117,19 +130,21 @@
          flex-direction: row;
          justify-content: space-around;
          padding-bottom: 20px;
-
+         position: static;
       
         }
         .gente {
          display: flex;
          flex-direction: row;
          justify-content: space-between;
-         background-color: #F5F5F5;
+         background-color: white;
          height: 40px;
-         border-radius: 02px;
+         border-radius: 05px;
          align-items: center;
          padding: 10px;
          margin-top: 10px;
+         margin-bottom: 20px;
+         box-shadow: 0px 0px 10px#0bb8fd3e ;
 
          
          
@@ -139,6 +154,11 @@
             display: flex;
             padding-left: 25px;
             gap: 20px  
+         }
+
+         .gente:hover {
+            box-shadow: 0px 0px 10px#0bb8fda5 ;
+            transition: .2s;
          }
 
 
@@ -174,22 +194,21 @@
 </head>
 <body>
    
-    <div class="hed">
-        <h1>TODO LIST</h1>
-       
+    <div class="puta">
+        <div class="hed">
+            <h1>TODO LIST</h1>
         
-        <div class="qq">
-            <input class="add" type="text" name="" id="" required minlength="3" placeholder="Write your todo list here...">
-            <input type="submit" value="ADD" class="btn">
+        
+            <div class="qq">
+                <input class="add" type="text" name="" id="" required minlength="3" placeholder="Write your todo list here...">
+                <input type="submit" value="ADD" class="btn">
+            </div>
+        
         </div>
-
-        
-
-    </div>
-
-    <div>
-      <h1 class="h1" style="color: black; text-align: center;">List Of Todo Works</h1>
-    </div>
+        <div>
+          <h1 class="h1" style="color: black; text-align: center;">List Of Todo Works</h1>
+        </div>
+    </div >
    <div class="conta">
       <div class="cla">
          <div class="gente">
@@ -201,6 +220,7 @@
 </body>
 
 <script>
+       var input = document.querySelector('.add')
     //criando os botoes
     var click = document.querySelector('.btn') 
 
@@ -210,12 +230,11 @@
    spanCheck.setAttribute('class', "cke material-symbols-outlined");
    spanCheck.innerText = 'check';
 
-   var input = document.querySelector('.add')
+
    var edit = document.createElement('span') ; 
    edit.setAttribute('class', "buta" )
    edit.innerText = 'EDIT';
-
-
+ 
    var spanCheck2 = document.createElement('span'); 
    spanCheck2.setAttribute('class', "fechar material-symbols-outlined" )
    spanCheck2.innerText = 'close';
@@ -232,14 +251,16 @@
    //criando o campo que contera butoes e os elementos
    var docu = document.createElement('div')
    docu.setAttribute('class', "gente");
-   docu.append(texto, divbutoes )
+   docu.append(divbutoes )
 
    //criando os elementos(paragrafos)
    var texto =  document.createElement('p')
   
 
    var campo = document.querySelector('.cla')
-   campo.append(docu)
+  
+
+
 
 
    console.log('antes do if')
@@ -250,12 +271,10 @@
 
       else {
         console.log('nao deu o if')
-         texto.textContent = 
-         console.log(texto)
-         docu.append(texto)
-         btn.append(spanCheck)
-         btn.append(edit)
-         btn.append(spanCheck2)
+         texto.textContent = input.value
+         campo.append(docu)
+         docu.prepend(texto)
+         
             
       }
 
