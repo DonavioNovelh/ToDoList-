@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Estilo de corpo e container */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f3f4f6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333333;
+      margin-bottom: 15px;
+    }
+
+    /* Campo de input e botão de adicionar */
+    .input-container {
+      display: flex;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #4b88a2;
+    }
+
+    .add-btn {
+      padding: 12px 20px;
+      background-color: #4b88a2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .add-btn:hover {
+      background-color: #3e748b;
+      transform: translateY(-2px);
+    }
+
+    /* Lista de tarefas */
+    ul {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background-color: #f9f9f9;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      transition: background-color 0.3s;
+      animation: fadeIn 0.4s ease;
+    }
+
+    li.completed {
+      background-color: #e6ffe6;
+      text-decoration: line-through;
+      color: #636363;
+    }
+
+    li:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Botão de remover */
+    .remove-btn {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .remove-btn:hover {
+      background-color: #ff4a4a;
+      transform: scale(1.1);
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Minha Lista de Tarefas</h1>
+    <div class="input-container">
+      <input type="text" id="taskInput" placeholder="Adicionar nova tarefa">
+      <button class="add-btn" onclick="addTask()">Adicionar</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskText = taskInput.value.trim();
+
+      if (taskText === '') return;
+
+      const taskItem = document.createElement('li');
+      taskItem.innerText = taskText;
+
+      taskItem.onclick = () => taskItem.classList.toggle('completed');
+
+      const removeBtn = document.createElement('button');
+      removeBtn.innerText = 'Remover';
+      removeBtn.classList.add('remove-btn');
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        taskItem.style.animation = 'fadeOut 0.3s forwards';
+        taskItem.addEventListener('animationend', () => taskItem.remove());
+      };
+
+      taskItem.appendChild(removeBtn);
+      document.getElementById('taskList').appendChild(taskItem);
+
+      taskInput.value = '';
+    }
+  </script>
+</body>
+</html>
